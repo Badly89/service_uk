@@ -230,6 +230,7 @@ const App = () => {
             proident mollit cillum dolor ea sit sint aliqua ex cillum.
           </div>
         </Content>
+        <Footer></Footer>
       </Layout>
     </Layout>
   );
