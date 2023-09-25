@@ -5,8 +5,9 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-import { register } from "../actions/auth";
+import { registerUser } from "../store/actions/auth";
 import { Select } from "antd";
+import { redirect } from "react-router-dom";
 
 
 const required = (value) => {
@@ -79,12 +80,6 @@ const Register = () => {
         const password = e.target.value;
         setPassword(password);
     };
-    const handleRoleChange = (e) => {
-        // const roles = e.target.value;
-        setRoles(e.target.value);
-
-
-    };
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -94,7 +89,7 @@ const Register = () => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(register(username, email, password, roles))
+            dispatch(registerUser(username, email, password, roles))
                 .then(() => {
                     setSuccessful(true);
 

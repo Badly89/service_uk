@@ -6,13 +6,13 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import { login } from "../actions/auth";
+import { loginUser } from "../store/actions/auth";
 
 const required = (value) => {
     if (!value) {
         return (
             <div className="alert alert-danger" role="alert">
-                This field is required!
+                Это поле является обязательным
             </div>
         );
     }
@@ -51,9 +51,9 @@ const Login = (props) => {
         form.current.validateAll();
 
         if (checkBtn.current.context._errors.length === 0) {
-            dispatch(login(username, password))
+            dispatch(loginUser(username, password))
                 .then(() => {
-                    navigate("/profile");
+                    navigate("/");
                     // window.location.reload();
                 })
                 .catch(() => {

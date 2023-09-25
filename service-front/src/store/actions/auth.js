@@ -7,9 +7,9 @@ import {
     SET_MESSAGE,
 } from "./types";
 
-import AuthService from "../services/auth-service";
+import AuthService from "../../services/auth-service";
 
-export const register = (username, email, password, roles) => (dispatch) => {
+export const registerUser = (username, email, password, roles) => (dispatch) => {
     return AuthService.register(username, email, password, roles).then(
 
         (response) => {
@@ -47,7 +47,7 @@ export const register = (username, email, password, roles) => (dispatch) => {
     );
 };
 
-export const login = (username, password) => (dispatch) => {
+export const loginUser = (username, password) => (dispatch) => {
     return AuthService.login(username, password).then(
 
         (data) => {
@@ -81,7 +81,7 @@ export const login = (username, password) => (dispatch) => {
     );
 };
 
-export const logout = () => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
     AuthService.logout();
 
     dispatch({
